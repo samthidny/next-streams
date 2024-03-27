@@ -1,0 +1,48 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  background-color: #222;
+  color: white;
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (max-width: 992px) {
+    font-size: 12px;
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (max-width: 768px) {
+    font-size: 10px;
+  }
+
+  @media only screen and (max-width: 500px) {
+    font-size: 9px;
+  }
+
+  @media only screen and (max-width: 300px) {
+    font-size: 8px;
+  }
+
+}
+
+body {
+  background-color: #222;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.logo-font {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+h1,
+h2,
+h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
