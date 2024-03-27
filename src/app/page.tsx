@@ -12,7 +12,7 @@ export default async function Page() {
 
 
   return <div>
-    <h1>Home page</h1>
+    <h1>Home page {process.env.TMDB_TOKEN}</h1>
     <Reel title="Popular" titles={popular} />
   </div>
 }
