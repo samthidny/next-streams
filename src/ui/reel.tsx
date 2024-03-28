@@ -17,7 +17,6 @@ export function Reel(props: ReelProps) {
     }
 
     return <section className="reel">
-        <button>{titles.length}</button>
         {renderTitle()}
         <div className="card-container">
             {list}
