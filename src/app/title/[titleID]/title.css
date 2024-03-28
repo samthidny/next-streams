@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+}
+
+.back-button {
+    flex-grow: 1;
+
+}
+
+.like-button {
+    margin-right: 1em;
+}
+
+.info-text {
+    background-color: rgba(0,0,0,0.7);
+    padding: 1em;
+}
+
+.info-text img {
+    border: 1px solid grey;
+}

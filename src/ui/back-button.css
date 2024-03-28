@@ -1,0 +1,15 @@
+.back-button {
+    background: none;
+    border: none;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.back-button svg {
+    width: 4em;
+    height: 4em;
+}
