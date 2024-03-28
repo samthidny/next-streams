@@ -12,7 +12,8 @@ export default async function Page() {
 
 
   return <div>
-    <h1>Home page {process.env.TMDB_TOKEN}</h1>
+    <h1>Home page TMDB_TOKEN:{process.env.TMDB_TOKEN}</h1>
+    <h2>TEST_ENV_VAR:{process.env.TEST_ENV_VAR}</h2>
     <Reel title="Popular" titles={popular} />
   </div>
 }
