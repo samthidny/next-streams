@@ -2,6 +2,7 @@ import { supabase } from "@/apis/supabase";
 import { TMDB } from "../apis/TMDB";
 import { ITitle } from "../data/ITitle";
 import { Reel } from "../ui/reel";
+export const dynamic = 'force-dynamic'
 
 export default async function Page() {
 
