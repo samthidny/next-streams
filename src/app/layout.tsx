@@ -1,5 +1,5 @@
-import Navigation from "./ui/navigation"
-import './app.css';
+import Navigation from "../ui/navigation"
+import './../app.css';
 import { Roboto } from 'next/font/google'
 
 const roboto = Roboto({

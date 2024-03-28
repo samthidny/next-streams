@@ -12,7 +12,7 @@ export default async function Navigation() {
             </Link>
             <div className="menu">
                 <ul>
-                    <li><Link href="/login">Login</Link></li>
+                    {/* <li><Link href="/login">Login</Link></li> */}
                 </ul>
             </div>
 

@@ -1,0 +1,17 @@
+.reel {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    gap: 0.5em;
+}
+
+.reel .card-container {
+    display: flex;
+    gap: 1em;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.reel .reel-card-container {
+    display: flex;
+}
