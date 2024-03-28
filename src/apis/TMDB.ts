@@ -17,8 +17,6 @@ const getResults = async (url: string, cacheID: string): Promise<ITitle[]> => {
     }
 
 
-    console.log('ANDY', TMDB.authToken);
-
     const options = {
         method: 'GET',
         headers: {
@@ -32,7 +30,6 @@ const getResults = async (url: string, cacheID: string): Promise<ITitle[]> => {
         const response = await fetch(url, options);
         const data = await response.json();
         TMDB.cache[cacheID] = data.results;
-        console.log('ANDY results', response)
         return data.results as ITitle[];
     } catch (error) {
         console.error('ANDY ERROR', error);

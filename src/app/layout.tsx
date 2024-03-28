@@ -1,3 +1,4 @@
+import ServerNavigation from "@/ui/server-navigation";
 import Navigation from "../ui/navigation"
 import './../app.css';
 import { Roboto } from 'next/font/google'
@@ -16,7 +17,7 @@ export default function RootLayout({
     <html lang="en" className={roboto.className}>
       <body className="App">
         
-        <Navigation />
+        <ServerNavigation />
         {children}
         
       </body>
