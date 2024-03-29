@@ -2,7 +2,11 @@ import Link from 'next/link'
 import React from 'react'
 import './navigation.css';
 
-export default async function Navigation() {
+type NavigationProps = {
+    isAuthorised: Boolean
+}
+
+export default async function Navigation(props:NavigationProps) {
 
     return (
 
@@ -12,7 +16,7 @@ export default async function Navigation() {
             </Link>
             <div className="menu">
                 <ul>
-                    {/* <li><Link href="/login">Login</Link></li> */}
+                    {!props.isAuthorised ? <li><Link href="/signin">Signin</Link></li> : ''}
                 </ul>
             </div>
 
