@@ -1,6 +1,6 @@
 'use server'
 
-import { supabase } from '@/apis/supabase'
+import { getSupabaseClient } from '@/apis/supabase'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
@@ -13,17 +13,21 @@ export async function login(formData: FormData) {
     password: formData.get('password') as string,
   }
 
+  const supabase = await getSupabaseClient();
   const { data, error } = await supabase.auth.signInWithPassword(form)
 
   if (error) {
     redirect('/error')
   }
 
-  const session = await supabase.auth.getUser();
-  console.log('supabse user', session.data.user);
+  console.log('signin', data);
+
+  console.log('supabse user', data.user);
+
+  console.log('supabse session', data.session);
 
 
-  if(session.data.user) {
+  if(data.user) {
     revalidatePath('/', 'layout')
     redirect('/')
   }
