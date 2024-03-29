@@ -11,10 +11,7 @@ export default async function Page() {
   const getChristmas: Promise<ITitle[]> = TMDB.searchTitles('christmas');
   const [popular, trending, christmas] = await Promise.all([getPopular, getTrending, getChristmas]);
   
-  const loggedIn = await isAuthenticatd();
-
   return <div>
-    {loggedIn ? 'User is logged in' : 'User is NOT logged in'}
     <Reel title="Popular" titles={popular} />
     <Reel title="Trending" titles={trending} />
     <Reel title="Christmas" titles={christmas} />

@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.content {
+    margin-top: -10em;
+    display: flex;
+    flex-direction: column;
+    width: 30em;
+    height: 20em;
+}
+
+
+form {
+    font-size: 1.2em;
+    border: 1px solid white;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    padding: 1em;
+    align-items: center;
+}
+
+label {
+    width: 12em;
+}
+
+input {
+    width: 20em;
+    padding: 0.6em;
+}
+
+button {
+    width: 8em;
+    height: 3em;
+    background-color: #386150;
+    color: white;
+}
