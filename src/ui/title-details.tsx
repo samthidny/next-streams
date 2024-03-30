@@ -5,29 +5,34 @@ import { LikeButton } from './like-button';
 
 
 type TitleDetailsProps = {
-    details: ITitle
+    details: ITitle,
+    isFavourite: boolean,
+    isLoggedIn: boolean,
+    addFavouriteHandler: Function,
+    removeFavouriteHandler: Function
 }
 
 
 export default async function TitleDetails(props: TitleDetailsProps) {
 
-
-    const serverHandler = async () => {
-        'use server'
-        console.log('My server handler!');
-    }
-
     const renderLikeForm = () => {
 
-        const isFavourite = false;
+        // TODO - setting type as any, as next doesnt seem to like passing server actions down as :Function- need to investigate
+        const serverHandler: any = props.isFavourite ? props.removeFavouriteHandler : props.addFavouriteHandler;
 
         return <form action={serverHandler}>
             <input name="id" type="hidden" defaultValue={details.id} />
-            <LikeButton selected={isFavourite}></LikeButton>
+            <LikeButton selected={props.isFavourite}></LikeButton>
         </form>
 
     }
 
+
+    const renderLikeButton = () => {
+        return props.isLoggedIn ? <div className="like-button">
+            {renderLikeForm()}
+        </div> : ''
+    }
 
     const details = props.details;
 
@@ -40,9 +45,7 @@ export default async function TitleDetails(props: TitleDetailsProps) {
                 <div className="back-button">
                     <BackButton></BackButton>
                 </div>
-                <div className="like-button">
-                    {renderLikeForm()}
-                </div>
+                {renderLikeButton()}
             </div>
             <h1>{details.original_title}</h1>
             <h2>{details.tagline}</h2>

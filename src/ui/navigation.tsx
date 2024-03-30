@@ -3,7 +3,8 @@ import React from 'react'
 import './navigation.css';
 
 type NavigationProps = {
-    isAuthorised: Boolean
+    isAuthorised: Boolean,
+    numFavourites: Number
 }
 
 export default async function Navigation(props:NavigationProps) {
@@ -16,7 +17,8 @@ export default async function Navigation(props:NavigationProps) {
             </Link>
             <div className="menu">
                 <ul>
-                    {!props.isAuthorised ? <li><Link href="/signin">Signin</Link></li> : ''}
+                    {!props.isAuthorised ? <li><Link href="/signin">Sign in</Link></li> : ''}
+                    {props.isAuthorised ? <li><Link href="/favourites">Favourites ({props.numFavourites.toString()})</Link></li> : ''}
                 </ul>
             </div>
 

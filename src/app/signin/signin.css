@@ -15,10 +15,9 @@
 }
 
 
-form {
+.signin-form {
     font-size: 1.2em;
     border: 1px solid white;
-    
     display: flex;
     flex-direction: column;
 }

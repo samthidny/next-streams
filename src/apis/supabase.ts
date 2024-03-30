@@ -10,7 +10,7 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr';
 
 
 export async function getSupabaseClient() {
-
+    'use server'
     const cookieStore = cookies()
 
     const supabase = createServerClient(
@@ -59,7 +59,26 @@ export async function getFavourites(): Promise<ITitle[]> {
     return cleaned ? cleaned : [];
 }
 
+export async function isFavourite(tmdb_id: string) {
+    'use server'
+    const supabase = await getSupabaseClient();
+    // TODO - rename title_id in db to tmdb_id for consistency
+    const { data, error } = await supabase
+        .from('favourites')
+        .select('title_id')
+        .eq('title_id', tmdb_id)
 
+    if (error) {
+        console.log('Error', error.details)
+    }
+
+    console.log('isFavourite', data);
+
+
+    return !!data && data.length > 0;
+}
+
+// TODO - title is probably redundant now
 export async function addFavourite(id: string, title: string) {
     'use server'
     const supabase = await getSupabaseClient();
@@ -92,3 +111,18 @@ export async function removeFavourite(id: string) {
     return true;
 }
 
+
+export async function cacheMovie(id: string, data: string) {
+    'use server'
+    const supabase = await getSupabaseClient();
+    const { error } = await supabase
+        .from('tmdb_movies')
+        .insert({ tmdb_id: id, tmdb_data: data })
+
+    if (error) {
+        console.log('Error', error.details)
+    }
+
+    console.log('Added to tmdb cache');
+    return true;
+}
