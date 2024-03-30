@@ -7,6 +7,7 @@ import { LikeButton } from './like-button';
 type TitleDetailsProps = {
     details: ITitle,
     isFavourite: boolean,
+    isLoggedIn: boolean,
     addFavouriteHandler: Function,
     removeFavouriteHandler: Function
 }
@@ -27,6 +28,12 @@ export default async function TitleDetails(props: TitleDetailsProps) {
     }
 
 
+    const renderLikeButton = () => {
+        return props.isLoggedIn ? <div className="like-button">
+            {renderLikeForm()}
+        </div> : ''
+    }
+
     const details = props.details;
 
     const posterURL = `https://image.tmdb.org/t/p/w300/${details.poster_path}`;
@@ -38,9 +45,7 @@ export default async function TitleDetails(props: TitleDetailsProps) {
                 <div className="back-button">
                     <BackButton></BackButton>
                 </div>
-                <div className="like-button">
-                    {renderLikeForm()}
-                </div>
+                {renderLikeButton()}
             </div>
             <h1>{details.original_title}</h1>
             <h2>{details.tagline}</h2>

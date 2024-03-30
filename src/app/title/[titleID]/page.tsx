@@ -2,12 +2,13 @@
 import { TMDB } from '@/apis/TMDB';
 import './title.css';
 import TitleDetails from '@/ui/title-details';
-import { addFavourite, cacheMovie, isFavourite, removeFavourite } from '@/apis/supabase';
+import { addFavourite, cacheMovie, isAuthenticatd, isFavourite, removeFavourite } from '@/apis/supabase';
 import { revalidatePath } from 'next/cache';
 
 export default async function Page({ params }: { params: { titleID: string } }) {
 
   const details = await TMDB.getDetails(params.titleID);
+  const isLoggedIn = await isAuthenticatd();
 
   //TODO - this should all be in separate API TMDB/Supabase
   const addFavouriteHandler = async (formData: FormData) => {
@@ -36,7 +37,7 @@ export default async function Page({ params }: { params: { titleID: string } }) 
   const isF = await isFavourite(details.id);
 
   return <div>
-    <TitleDetails details={details} isFavourite={isF} addFavouriteHandler={addFavouriteHandler} removeFavouriteHandler={removeFavouriteHandler} />
+    <TitleDetails details={details} isFavourite={isF} isLoggedIn={isLoggedIn} addFavouriteHandler={addFavouriteHandler} removeFavouriteHandler={removeFavouriteHandler} />
 
   </div>
 }
