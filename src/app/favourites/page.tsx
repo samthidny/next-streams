@@ -8,8 +8,6 @@ export default async function Page() {
 
   return <div>
 
-    <h1>Favs</h1>
-    
     <Reel title="Favourites" titles={favourites} />
 
   </div>
