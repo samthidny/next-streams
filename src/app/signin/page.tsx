@@ -6,7 +6,7 @@ export default function LoginPage() {
     <div className="container">
       <div className="content">
         <h1>Sign In</h1>
-        <form>
+        <form className="signin-form">
           <div className="row">
             <label htmlFor="email">Email:</label>
             <input id="email" name="email" type="email" required value="test.user888@myrandomdomain.com" />

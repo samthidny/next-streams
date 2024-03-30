@@ -42,7 +42,7 @@ export default async function TitleDetails(props: TitleDetailsProps) {
                     {renderLikeForm()}
                 </div>
             </div>
-            <h1>{details.original_title} isFav: {props.isFavourite ? 'Yes' : 'No'}</h1>
+            <h1>{details.original_title}</h1>
             <h2>{details.tagline}</h2>
             <h2>{details.vote_average}</h2>
             <p>{details.overview}</p>
