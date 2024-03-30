@@ -18,7 +18,7 @@ export default async function Navigation(props:NavigationProps) {
             <div className="menu">
                 <ul>
                     {!props.isAuthorised ? <li><Link href="/signin">Sign in</Link></li> : ''}
-                    {props.isAuthorised ? <li><Link href="/favourites">Favourites ({props.numFavourites})</Link></li> : ''}
+                    {props.isAuthorised ? <li><Link href="/favourites">Favourites ({props.numFavourites.toString()})</Link></li> : ''}
                 </ul>
             </div>
 

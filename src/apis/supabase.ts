@@ -59,7 +59,7 @@ export async function getFavourites(): Promise<ITitle[]> {
     return cleaned ? cleaned : [];
 }
 
-export async function isFavourite(tmdb_id: string): Boolean {
+export async function isFavourite(tmdb_id: string) {
     'use server'
     const supabase = await getSupabaseClient();
     // TODO - rename title_id in db to tmdb_id for consistency
@@ -75,7 +75,7 @@ export async function isFavourite(tmdb_id: string): Boolean {
     console.log('isFavourite', data);
 
 
-    return data.length > 0;
+    return !!data && data.length > 0;
 }
 
 // TODO - title is probably redundant now

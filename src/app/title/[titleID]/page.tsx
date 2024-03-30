@@ -1,3 +1,4 @@
+'use server'
 import { TMDB } from '@/apis/TMDB';
 import './title.css';
 import TitleDetails from '@/ui/title-details';

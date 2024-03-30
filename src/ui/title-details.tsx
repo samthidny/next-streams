@@ -6,8 +6,7 @@ import { LikeButton } from './like-button';
 
 type TitleDetailsProps = {
     details: ITitle,
-    isFavourite: Boolean,
-    favouriteHandler: Function,
+    isFavourite: boolean,
     addFavouriteHandler: Function,
     removeFavouriteHandler: Function
 }
@@ -15,16 +14,10 @@ type TitleDetailsProps = {
 
 export default async function TitleDetails(props: TitleDetailsProps) {
 
-
-    // const serverHandler = async () => {
-    //     'use server'
-    //     console.log('My server handler!');
-    //     props.favouriteHandler();
-    // }
-
     const renderLikeForm = () => {
 
-        const serverHandler:Function = props.isFavourite ? props.removeFavouriteHandler : props.addFavouriteHandler;
+        // TODO - setting type as any, as next doesnt seem to like passing server actions down as :Function- need to investigate
+        const serverHandler: any = props.isFavourite ? props.removeFavouriteHandler : props.addFavouriteHandler;
 
         return <form action={serverHandler}>
             <input name="id" type="hidden" defaultValue={details.id} />
