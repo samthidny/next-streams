@@ -5,25 +5,30 @@ import { LikeButton } from './like-button';
 
 
 type TitleDetailsProps = {
-    details: ITitle
+    details: ITitle,
+    isFavourite: Boolean,
+    favouriteHandler: Function,
+    addFavouriteHandler: Function,
+    removeFavouriteHandler: Function
 }
 
 
 export default async function TitleDetails(props: TitleDetailsProps) {
 
 
-    const serverHandler = async () => {
-        'use server'
-        console.log('My server handler!');
-    }
+    // const serverHandler = async () => {
+    //     'use server'
+    //     console.log('My server handler!');
+    //     props.favouriteHandler();
+    // }
 
     const renderLikeForm = () => {
 
-        const isFavourite = false;
+        const serverHandler:Function = props.isFavourite ? props.removeFavouriteHandler : props.addFavouriteHandler;
 
         return <form action={serverHandler}>
             <input name="id" type="hidden" defaultValue={details.id} />
-            <LikeButton selected={isFavourite}></LikeButton>
+            <LikeButton selected={props.isFavourite}></LikeButton>
         </form>
 
     }
@@ -44,7 +49,7 @@ export default async function TitleDetails(props: TitleDetailsProps) {
                     {renderLikeForm()}
                 </div>
             </div>
-            <h1>{details.original_title}</h1>
+            <h1>{details.original_title} isFav: {props.isFavourite ? 'Yes' : 'No'}</h1>
             <h2>{details.tagline}</h2>
             <h2>{details.vote_average}</h2>
             <p>{details.overview}</p>
