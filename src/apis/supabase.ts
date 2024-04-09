@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { ITitle } from '../data/ITitle';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import { createClient } from '@/utils/supabase/server';
 
 
 // const supabaseUrl = 'https://iqenpywxshkpavdsuqab.supabase.co';
@@ -11,34 +12,15 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr';
 
 export async function getSupabaseClient() {
     'use server'
-    const cookieStore = cookies()
 
-    const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-        {
-            cookies: {
-                get(name: string) {
-                    return cookieStore.get(name)?.value
-                },
-                set(name: string, value: string, options: CookieOptions) {
-                    cookieStore.set({ name, value, ...options })
-                },
-                remove(name: string, options: CookieOptions) {
-                    cookieStore.set({ name, value: '', ...options })
-                }
-            },
-        }
-    )
-
-    return supabase
+    const client = await createClient();
+    return client;
 }
 
 
 export async function isAuthenticatd() {
     const supabase = await getSupabaseClient();
     const user = await supabase.auth.getUser();
-    console.log('supabase user', user);
     return !!user.data.user;
 }
 
@@ -54,7 +36,7 @@ export async function getFavourites(): Promise<ITitle[]> {
     }
 
     const cleaned: ITitle[] | undefined = data?.map((item: any) => JSON.parse(item.tmdb_movies.tmdb_data) as ITitle);
-    console.log('CLEANED....', cleaned);
+    //console.log('CLEANED....', cleaned);
 
     return cleaned ? cleaned : [];
 }

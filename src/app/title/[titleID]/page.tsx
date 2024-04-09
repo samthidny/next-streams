@@ -13,7 +13,7 @@ export default async function Page({ params }: { params: { titleID: string } }) 
   //TODO - this should all be in separate API TMDB/Supabase
   const addFavouriteHandler = async (formData: FormData) => {
     'use server'
-    console.log('Server: Like', details);
+    // console.log('Server: Like', details);
 
     // Cache details in tmdb_movies
     await cacheMovie(details.id, JSON.stringify(details));
@@ -26,7 +26,7 @@ export default async function Page({ params }: { params: { titleID: string } }) 
 
   const removeFavouriteHandler = async (formData: FormData) => {
     'use server'
-    console.log('Server: Unlike', details);
+    // console.log('Server: Unlike', details);
 
     await removeFavourite(details.id);
 

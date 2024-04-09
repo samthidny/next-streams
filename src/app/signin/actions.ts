@@ -1,6 +1,6 @@
 'use server'
 
-import { getSupabaseClient } from '@/apis/supabase'
+import { getSupabaseClientSSR } from '@/apis/supabase'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
@@ -12,7 +12,7 @@ export async function login(formData: FormData) {
     route: formData.get('route') as string,
   }
 
-  const supabase = await getSupabaseClient();
+  const supabase = await getSupabaseClientSSR();
   const { data, error } = await supabase.auth.signInWithPassword(form)
 
   if (error) {

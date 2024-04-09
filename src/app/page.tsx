@@ -1,4 +1,3 @@
-import { isAuthenticatd } from "@/apis/supabase";
 import { TMDB } from "../apis/TMDB";
 import { ITitle } from "../data/ITitle";
 import { Reel } from "../ui/reel";
