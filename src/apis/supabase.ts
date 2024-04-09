@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { ITitle } from '../data/ITitle';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import { createClient } from '@/utils/supabase/server';
 
 
 // const supabaseUrl = 'https://iqenpywxshkpavdsuqab.supabase.co';
@@ -11,34 +12,15 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr';
 
 export async function getSupabaseClient() {
     'use server'
-    const cookieStore = cookies()
 
-    const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-        {
-            cookies: {
-                get(name: string) {
-                    return cookieStore.get(name)?.value
-                },
-                set(name: string, value: string, options: CookieOptions) {
-                    cookieStore.set({ name, value, ...options })
-                },
-                remove(name: string, options: CookieOptions) {
-                    cookieStore.set({ name, value: '', ...options })
-                }
-            },
-        }
-    )
-
-    return supabase
+    const client = await createClient();
+    return client;
 }
 
 
 export async function isAuthenticatd() {
     const supabase = await getSupabaseClient();
     const user = await supabase.auth.getUser();
-    console.log('supabase user', user);
     return !!user.data.user;
 }
 
@@ -54,8 +36,6 @@ export async function getFavourites(): Promise<ITitle[]> {
     }
 
     const cleaned: ITitle[] | undefined = data?.map((item: any) => JSON.parse(item.tmdb_movies.tmdb_data) as ITitle);
-    console.log('CLEANED....', cleaned);
-
     return cleaned ? cleaned : [];
 }
 
@@ -72,9 +52,6 @@ export async function isFavourite(tmdb_id: string) {
         console.log('Error', error.details)
     }
 
-    console.log('isFavourite', data);
-
-
     return !!data && data.length > 0;
 }
 
@@ -90,7 +67,6 @@ export async function addFavourite(id: string, title: string) {
         console.log('Error', error.details)
     }
 
-    console.log('Added favourite to supabase!!!!!');
     return true;
 }
 
@@ -107,7 +83,6 @@ export async function removeFavourite(id: string) {
         console.log('Error', error.details)
     }
 
-    console.log('Deleted favourite to supabase!!!!!');
     return true;
 }
 
@@ -123,6 +98,5 @@ export async function cacheMovie(id: string, data: string) {
         console.log('Error', error.details)
     }
 
-    console.log('Added to tmdb cache');
     return true;
 }
