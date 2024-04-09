@@ -3,6 +3,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Search } from './search'
 import useDebounce from './hooks/use-debounce';
+import './search-ui.css'
 
 export default function SearchUI() {
 
@@ -26,8 +27,7 @@ export default function SearchUI() {
     const onSearch = (str: string) => { console.log('onSearch', str) };
 
     return (
-        <div>
-            <h1>Search:</h1>
+        <div className="search-ui">
             <Search value={value} onInput={onInput} onSearch={onSearch} autocompleteResults={results} />
         </div>
     )

@@ -1,15 +1,14 @@
 .autocomplete {
     position: absolute;
-    background-color: #333;
-    margin-top: 0.5em;
     height: 26em;
     width: 32em;
     overflow: scroll;
+    border: 1px solid white;
 }
 
 .autocomplete ul {
     list-style-type: none;
-    padding: 0.5em;
+    padding-left: 0;
     margin: 0;
 }
 
