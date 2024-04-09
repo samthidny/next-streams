@@ -36,8 +36,6 @@ export async function getFavourites(): Promise<ITitle[]> {
     }
 
     const cleaned: ITitle[] | undefined = data?.map((item: any) => JSON.parse(item.tmdb_movies.tmdb_data) as ITitle);
-    //console.log('CLEANED....', cleaned);
-
     return cleaned ? cleaned : [];
 }
 
@@ -54,9 +52,6 @@ export async function isFavourite(tmdb_id: string) {
         console.log('Error', error.details)
     }
 
-    console.log('isFavourite', data);
-
-
     return !!data && data.length > 0;
 }
 
@@ -72,7 +67,6 @@ export async function addFavourite(id: string, title: string) {
         console.log('Error', error.details)
     }
 
-    console.log('Added favourite to supabase!!!!!');
     return true;
 }
 
@@ -89,7 +83,6 @@ export async function removeFavourite(id: string) {
         console.log('Error', error.details)
     }
 
-    console.log('Deleted favourite to supabase!!!!!');
     return true;
 }
 
@@ -105,6 +98,5 @@ export async function cacheMovie(id: string, data: string) {
         console.log('Error', error.details)
     }
 
-    console.log('Added to tmdb cache');
     return true;
 }
