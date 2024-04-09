@@ -3,7 +3,6 @@ import Navigation from "./navigation";
 
 export default async function ServerNavigation() {
     'use server'
-    
 
     const client = await getSupabaseClient();
     const session = client.auth.getUser();
@@ -12,7 +11,6 @@ export default async function ServerNavigation() {
 
     const isAuthorised = await isAuthenticatd();
     let numFavourites = 0;
-    console.log('Server-navigation', isAuthorised);
     if(isAuthorised) {
         const favourites = await getFavourites();
         numFavourites = favourites.length;
