@@ -45,7 +45,7 @@ export function Search(props: SearchProps) {
     function blurHandler() {
         // TODO - this is a bad work around because Link action isnt being dispatched because focus lost
         setTimeout(() => {
-            setShowAutoComplete(false);
+            //setShowAutoComplete(false);
         }, 1000);
 
     }
@@ -54,9 +54,9 @@ export function Search(props: SearchProps) {
 
     return <div>
         <form className="search" onSubmit={submitHandler} onBlur={blurHandler}>
-            <label htmlFor="search">Search:</label>
+            {/* <label htmlFor="search">Search:</label> */}
             <div className="search-text-container">
-                <input id="search" type="search" onInput={inputHandler} value={search} onFocus={focusHandler} ></input>
+                <input id="search" type="search" placeholder="Search" onInput={inputHandler} value={search} onFocus={focusHandler} ></input>
                 {autoComplete}
             </div>
             <button type="submit" onClick={searchHandler}>Search</button>

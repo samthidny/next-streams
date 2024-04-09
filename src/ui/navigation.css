@@ -24,6 +24,7 @@
 }
 
 .logo-link {
+    display: flex;
     text-decoration: none;
 }
 
@@ -36,11 +37,11 @@
     display: flex;
     justify-content: right;
     flex-grow: 1;
-    padding-top: 0.8em;
 }
 
 .menu ul {
     display: flex;
+    align-items: center;
     gap: 2.5em;
     padding: 1em;
     margin: 0;
@@ -80,6 +81,10 @@
     .NavBar {
         flex-direction: column;
         height: 7em;
+    }
+
+    .logo-link {
+        justify-content: center;
     }
 
     .logo, .menu {

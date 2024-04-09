@@ -3,21 +3,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
 }
 
 .content {
     margin-top: -10em;
     display: flex;
     flex-direction: column;
-    width: 30em;
-    height: 20em;
+    width: 40em;
+    background-color: #111;
+    padding: 2em;
+    border-radius: 1em;
 }
 
+.content h1 {
+    margin-top: 0;
+}
 
 .signin-form {
     font-size: 1.2em;
-    border: 1px solid white;
     display: flex;
     flex-direction: column;
 }
@@ -35,6 +39,7 @@ label {
 input {
     width: 20em;
     padding: 0.6em;
+    border-radius: 0.4em;
 }
 
 button {
@@ -42,4 +47,6 @@ button {
     height: 3em;
     background-color: #386150;
     color: white;
+    border-radius: 0.4em;
+    border: 1px solid white;
 }
