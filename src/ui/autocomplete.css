@@ -1,0 +1,30 @@
+.autocomplete {
+    position: absolute;
+    background-color: #333;
+    margin-top: 0.5em;
+    height: 26em;
+    width: 32em;
+    overflow: scroll;
+}
+
+.autocomplete ul {
+    list-style-type: none;
+    padding: 0.5em;
+    margin: 0;
+}
+
+.autocomplete li {
+    padding-top: 0;
+}
+
+.autocomplete a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 1em;
+}
+
+.autocomplete li a:hover {
+    background-color: gray;
+    text-decoration: underline;
+}
